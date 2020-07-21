@@ -18,7 +18,7 @@ De manera inversa nosotros también podemos realizar la **exportación** de los 
 * **`save()`**: Permiteguardar espacios de trabajo. 
 * **`serialize()`**: Sirve para guardar objetos de R sencillos de manera binaria. 
 
-## Reading Data Files
+## Reading Tabular Data Files
 Una de las funciones más utilizadas en R es la función **`read.table`**, utilizada para la lectura de tablas de datos.Algunos de los argumentos más importantes de la función son:
 
 * `file=""`, es el nombre y la ruta donde se encuentra el archivo.
@@ -45,3 +45,25 @@ MB <- bytes/2**20 # 2^20 bytes/MB
 GB <- MB/1000
 paste(GB, "Gigabytes")
 ```
+
+
+## Reading Textual Data Files
+Además de datos tabulares R puede importar formatos de texto, pueden ser una buena herrmaienta si se usan con un sistema de control de versiones como Git para rastrear cambios entre las versiones. Una de las limitantes es que pueden llegar a utilizar mucho espacio, por lo que con regularidad se requiere mantener los archivos compresos. 
+
+
+## Interfaces to the Outside World 
+R puede interactuar con diferentes tipos de elementos fuera de su propio entorno:
+
+* `file`, abre una conexión con un archivo.
+* `gzfile`, abre una conexión con un archivo compreso *gzip*.
+* `bzfile`, abre una conexión con un archivo compreso *bzip2*. 
+* `url`, abre una conexión con una página web. 
+
+```{r}
+# This might take time
+conexion <- url("http://www.google.com","r") # Establece la conexión con la url, solo lectura ("r")
+x <- readLines(conexion)   # con readLines importo el texto que contiene mi conexión
+head(x)
+
+```
+
